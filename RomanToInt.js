@@ -46,6 +46,7 @@ function toInteger(roman) {
     let currentValue = 0
     //right to left
     for (var i = length; i >= 0; i--) {
+        currentValue=romanToIntMap[roman[i]]
         if (prevValue > currentValue) {
             totalvalue -= currentValue
         }
@@ -59,3 +60,4 @@ function toInteger(roman) {
 
 
 console.log(toInteger("MCMXCIV"))
+console.log(toInteger("LVIII"))

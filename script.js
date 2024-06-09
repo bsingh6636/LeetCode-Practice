@@ -46,24 +46,41 @@ function toInteger(roman){
     for(var i=length;i>=0;i--){
         console.log(roman[i])
          currentValue=romanToIntMap[roman[i]]
-         console.log("Current value:",currentValue)
-         console.log("prev",prevValue)
-       
-        if(prevValue>currentValue){
+         if(prevValue>currentValue){
             totalvalue-=currentValue
-            console.log("-",totalvalue)
         }
        else{
         totalvalue+=currentValue
-        console.log(totalvalue)
        }
-       prevValue=currentValue
-      
+       prevValue=currentValue  
     }
-    console.log(totalvalue)
-    return totalvalue
-    
+    return totalvalue  
 }
 
 
 console.log(toInteger("MCMXCIV"))
+
+// var romanToInt = function(s) {
+//     const map = {
+//         "I":1,
+//         "V":5,
+//         "X":10,
+//         "L":50,
+//         "C":100,
+//         "D":500,
+//         "M":1000 
+//     }
+//     let totalvalue=0;
+//     let prevValue=0;
+//     let currentValue=0;
+//    for(let i=s.length-1;i>=0;i--){
+//             currentValue=map[s[i]]
+//             if(currentValue<prevValue){
+//                 totalvalue+=currentValue
+//             }else{
+//                 totalvalue-=currentValue
+//             }
+//    }return totalvalue
+// };
+
+// console.log(romanToInt("MCMXCIV"))
