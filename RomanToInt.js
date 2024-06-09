@@ -8,7 +8,7 @@
 // C can be placed before D (500) and M (1000) to make 400 and 900.
 // Given a roman numeral, convert it to an integer.
 
- 
+
 
 // Example 1:
 
@@ -26,43 +26,35 @@
 // Output: 1994
 // Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 
-function toInteger(roman){
-    
-    const romanToIntMap = 
-     {  "I":1,
-        "V":5,
-        "X":10,
-        "L":50,
-        "C":100,
-        "D":500,
-        "M":1000 
+function toInteger(roman) {
+
+    const romanToIntMap =
+    {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000
     }
-    
-  
-    const length=roman.length-1
-    let totalvalue=0
-    let prevValue=0;
-    let  currentValue =0
-    for(var i=length;i>=0;i--){
-        console.log(roman[i])
-         currentValue=romanToIntMap[roman[i]]
-         console.log("Current value:",currentValue)
-         console.log("prev",prevValue)
-       
-        if(prevValue>currentValue){
-            totalvalue-=currentValue
-            console.log("-",totalvalue)
+
+
+    const length = roman.length - 1
+    let totalvalue = 0
+    let prevValue = 0;
+    let currentValue = 0
+    //right to left
+    for (var i = length; i >= 0; i--) {
+        if (prevValue > currentValue) {
+            totalvalue -= currentValue
         }
-       else{
-        totalvalue+=currentValue
-        console.log(totalvalue)
-       }
-       prevValue=currentValue
-      
+        else {
+            totalvalue += currentValue
+        }
+        prevValue = currentValue
     }
-    console.log(totalvalue)
     return totalvalue
-    
 }
 
 
