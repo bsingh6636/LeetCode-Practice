@@ -1,24 +1,56 @@
-var threeSumClosest = function (nums, target) {
- 
-    nums.sort((a, b) => a - b)
-    let closetSum = nums[0] + nums[1] + nums[2]
-    for (let i = 0; i < nums.length - 2; i++) {
-        if (i > 0 && nums[i] == nums[i - 1]) continue;
-        let left = i + 1, right = nums.length - 1
-       while(left<right){
-        let currentSum = nums[i] + nums[left] + nums[right]
-        if (currentSum == target) return currentSum;
-        if (Math.abs(currentSum - target) < Math.abs(closetSum - target)) {
-            closetSum = currentSum
-        }
-        if (currentSum < target) left++;
-        else right--;
-       }
+// 20. Valid Parentheses
+// Easy
+// Topics
+// Companies
+// Hint
+// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+// An input string is valid if:
+
+// Open brackets must be closed by the same type of brackets.
+// Open brackets must be closed in the correct order.
+// Every close bracket has a corresponding open bracket of the same type.
+
+
+// Example 1:
+
+// Input: s = "()"
+// Output: true
+// Example 2:
+
+// Input: s = "()[]{}"
+// Output: true
+// Example 3:
+
+// Input: s = "(]"
+// Output: false
+
+
+function isValidParenthesis(s) {
+    let stack = []
+    const bracketMap =
+    {
+        ")": "(",
+        "}": "{",
+        "]": "["
     }
-    return closetSum
-};
+    for (let char of s) {
+
+        if (char in bracketMap) {
+             let topElement = stack.length > 0 ? stack.pop() : "#"
+              if (bracketMap[char] !== topElement) {
+                 return false
+            }
+        } else {
+            stack.push(char)
+        }
+    }
+    return stack.length == 0;
+
+}
 
 
-console.log(threeSumClosest(nums = [-1, 2, 1, -4], target = 1))
-console.log(threeSumClosest(nums = [4,0,5,-5,3,3,0,-4,-5], target = -2))
-
+console.log(isValidParenthesis("([{}])"))
+console.log(isValidParenthesis("["))
+console.log(isValidParenthesis("(]"))
+console.log(isValidParenthesis("()[]{}"))
