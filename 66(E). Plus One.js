@@ -24,7 +24,7 @@
 
 var plusOne = function(digits) {
     let digit=digits.join('')
-    digit=BigInt(digit)+BigInt(1)
+    digit=BigInt(digit)+BigInt(1) //BigInt is used to handle Big Interger   Number(digits) won't work as it doesn't support larger integers
      return  digit.toString().split('')
  };
  
